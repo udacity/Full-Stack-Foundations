@@ -295,6 +295,11 @@ menuItem2 = MenuItem(name = "Veggie Burger", description = "Juicy grilled veggie
 session.add(menuItem2)
 session.commit()
 
+menuItem10 = MenuItem(name = "Spinach Ice Cream", description = "vanilla ice cream made with organic spinach leaves", price = "$1.99", course = "Dessert", restaurant = restaurant1)
+
+session.add(menuItem10)
+session.commit()
+
 
 
 #Menu for Cocina Y Amor
