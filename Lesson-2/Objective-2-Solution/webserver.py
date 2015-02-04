@@ -28,6 +28,7 @@ class webServerHandler(BaseHTTPRequestHandler):
                 for restaurant in restaurants:
                     output += restaurant.name
                     output += "</br>"
+                    ##Objective 2 -- Add Edit and Delete Links
                     output += "<a href ='#' >Edit </a> " 
                     output += "</br>"
                     output += "<a href =' #'> Delete </a>"
@@ -42,7 +43,7 @@ class webServerHandler(BaseHTTPRequestHandler):
 
 def main():
     try:
-        server = HTTPServer(('', 80), webServerHandler)
+        server = HTTPServer(('', 8080), webServerHandler)
         print 'Web server running...open localhost:8080/restaurants in your browser'
         server.serve_forever()
     except KeyboardInterrupt:
