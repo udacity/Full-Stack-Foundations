@@ -1,29 +1,32 @@
-from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
+import os
+import sys
+from sqlalchemy import Column, ForeignKey, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import relationship
+from sqlalchemy import create_engine
+ 
+Base = declarative_base()
+ 
+class Restaurant(Base):
+    __tablename__ = 'restaurant'
+   
+    id = Column(Integer, primary_key=True)
+    name = Column(String(250), nullable=False)
+ 
+class MenuItem(Base):
+    __tablename__ = 'menu_item'
 
-class webServerHandler(BaseHTTPRequestHandler):
-	def do_GET(self):
-		try:
-			if self.path.endswith("/hello"):
-				self.send_response(200)
-				self.send_header('Content-type', 'text/html')
-				self.end_headers()
-				message = ""
-				message += "<html><body>Hello!</body></html>"
-				self.wfile.write(message)
-				print message
-				return
-		except IOError:
-			self.send_error(404, 'File Not Found: %s' % self.path)
 
-def main():
-	try:
-		port = 80
-		server = HTTPServer(('', port), webServerHandler)
-		print "Web Server running on port %s"  % port
-		server.serve_forever()
-	except KeyboardInterrupt:
-		print " ^C entered, stopping web server...."
-		server.socket.close()
+    name =Column(String(80), nullable = False)
+    id = Column(Integer, primary_key = True)
+    description = Column(String(250))
+    price = Column(String(8))
+    course = Column(String(250))
+    restaurant_id = Column(Integer,ForeignKey('restaurant.id'))
+    restaurant = relationship(Restaurant) 
 
-if __name__ == '__main__':
-	main()
+
+engine = create_engine('sqlite:///restaurantmenu.db')
+ 
+
+Base.metadata.create_all(engine)
