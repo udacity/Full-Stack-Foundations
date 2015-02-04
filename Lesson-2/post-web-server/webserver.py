@@ -57,7 +57,7 @@ def do_POST(self):
 
 def main():
 	try:
-		port = 80
+		port = 8080
 		server = HTTPServer(('', port), webServerHandler)
 		print "Web Server running on port %s"  % port
 		server.serve_forever()
