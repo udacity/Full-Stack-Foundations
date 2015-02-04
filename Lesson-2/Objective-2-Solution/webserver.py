@@ -1,49 +1,48 @@
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
+import cgi
+
+## import CRUD Operations from Lesson 1 ##
+from database_setup import Base, Restaurant, MenuItem
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from database_setup import Base, Restaurant, MenuItem
 
+##Create session and connect to DB ##
 engine = create_engine('sqlite:///restaurantmenu.db')
 Base.metadata.bind = engine
-
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 
 
-class MyHandler(BaseHTTPRequestHandler):
+class webServerHandler(BaseHTTPRequestHandler):
 
     def do_GET(self):
-        restaurants = session.query(Restaurant).all()
         try:
             if self.path.endswith("/restaurants"):
+                restaurants = session.query(Restaurant).all()
                 output = ""
                 self.send_response(200)
-                self.send_header('Content-type',	'text/html')
+                self.send_header('Content-type','text/html')
                 self.end_headers()
-                
                 output += "<html><body>"
                 for restaurant in restaurants:
                     output += restaurant.name
                     output += "</br>"
-                    ##SOLUTION TO OBJECTIVE 2 ADDED HERE
                     output += "<a href ='#' >Edit </a> " 
                     output += "</br>"
                     output += "<a href =' #'> Delete </a>"
                     output += "</br></br></br>"
+                    
                 output += "</body></html>"
                 self.wfile.write(output)
-
-                
+                return
         except IOError:
             self.send_error(404,'File Not Found: %s' % self.path)
      
 
-   
-
 def main():
     try:
-        server = HTTPServer(('', 80), MyHandler)
+        server = HTTPServer(('', 80), webServerHandler)
         print 'Web server running...open localhost:8080/restaurants in your browser'
         server.serve_forever()
     except KeyboardInterrupt:
