@@ -1,1 +1,36 @@
-#
+<html>
+
+<body>
+
+<h1>{{restaurant.name}}</h1>
+
+<!--MESSAGE FLASHING EXAMPLE -->
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+
+<ul>
+{% for message in messages %}
+  <li><strong>{{message}}</strong></li>
+  {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
+
+{% for i in items %}
+
+<div>
+
+<p>{{i.name}}</p>
+
+<p>{{i.description}}</p>
+
+<p> {{i.price}} </p>
+
+</div>
+
+
+{% endfor %}
+</body>
+
+</html>
