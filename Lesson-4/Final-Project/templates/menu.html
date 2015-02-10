@@ -127,7 +127,7 @@
 
 		{% else %}
 		<p> You currently have no menu items. <p>
-			<a href = "#">Create new menu item </a>
+		<a href = "{{url_for('newMenuItem', restaurant_id = restaurant.id )}}">Create New Item</a>
 			{% endif %}
 </div>
 	</body>
