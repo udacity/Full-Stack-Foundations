@@ -107,7 +107,7 @@ menuItem5 = MenuItem(name = "Beef Noodle Soup", description = "A Chinese noodle 
 session.add(menuItem5)
 session.commit()
 
-menuItem6 = MenuItem(name = "Ramen", description = "a Japanese noodle soup dish. It consists of Chinese-style wheat noodles served in a meat- or (occasionally) fish-based broth, often flavored with soy sauce or miso, and uses toppings such as sliced pork (チャーシュー chāshū?), dried seaweed(海苔 nori), kamaboko, and green onions.", price = "12", course = "Entree", restaurant = restaurant2)
+menuItem6 = MenuItem(name = "Ramen", description = "a Japanese noodle soup dish. It consists of Chinese-style wheat noodles served in a meat- or (occasionally) fish-based broth, often flavored with soy sauce or miso, and uses toppings such as sliced pork, dried seaweed, kamaboko, and green onions.", price = "12", course = "Entree", restaurant = restaurant2)
 
 session.add(menuItem6)
 session.commit()
@@ -295,6 +295,11 @@ menuItem2 = MenuItem(name = "Veggie Burger", description = "Juicy grilled veggie
 session.add(menuItem2)
 session.commit()
 
+menuItem10 = MenuItem(name = "Spinach Ice Cream", description = "vanilla ice cream made with organic spinach leaves", price = "$1.99", course = "Dessert", restaurant = restaurant1)
+
+session.add(menuItem10)
+session.commit()
+
 
 
 #Menu for Cocina Y Amor
@@ -329,23 +334,12 @@ menuItem1 = MenuItem(name = "Guanciale Chawanmushi", description = "Japanese egg
 session.add(menuItem1)
 session.commit()
 
-menuItem1 = MenuItem(name = "Lemon Curd ‘Ice Cream’ Sandwich", description = "Lemon Curd ‘Ice Cream’ Sandwich on a chocolate macaron with cardamom meringue and cashews", price = "$4.25", course = "Dessert", restaurant = restaurant1)
+
+
+menuItem1 = MenuItem(name = "Lemon Curd Ice Cream Sandwich", description = "Lemon Curd Ice Cream Sandwich on a chocolate macaron with cardamom meringue and cashews", price = "$4.25", course = "Dessert", restaurant = restaurant1)
 
 session.add(menuItem1)
 session.commit()
-
-menuItem1 = MenuItem(name = "Lemon Curd ‘Ice Cream’ Sandwich", description = "Lemon Curd ‘Ice Cream’ Sandwich on a chocolate macaron with cardamom meringue and cashews", price = "$4.25", course = "Dessert", restaurant = restaurant1)
-
-session.add(menuItem1)
-session.commit()
-
-
-
-
-
-
-
 
 
 print "added menu items!"
-
