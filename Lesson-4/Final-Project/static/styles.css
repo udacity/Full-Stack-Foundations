@@ -1,4 +1,4 @@
-body            { font-family: sans-serif; background-color: #333333}
+body            { font-family: sans-serif; background-color: #333333; background-image: url('https://cloud.githubusercontent.com/assets/9041401/6119508/7cbced14-b07e-11e4-9dbd-f01488203879.jpg')}
  h1, h2, h3, h4       { color: #CCCCCC; }
 h1, h2          { font-family: 'Georgia', serif; margin: 0; }
 h1              { border-bottom: 2px solid #eee; }
@@ -9,7 +9,7 @@ p               { color: #CCCCCC;}
 a {text-decoration: none; color:#FFFFCC; font-size: .75em;}
 
 .pane {position:absolute; left: 25%; border: 2px solid;
-    border-radius: 25px; padding: 5px; margin: 5px; border-color: #999999; }
+    border-radius: 25px; padding: 5px; margin: 5px; border-color: #999999; background-color: #333333; }
 .header         {left:50%; text-align: center;}
 .name {width:50%;display: inline-block; float: left;}
 .description {}
@@ -17,4 +17,6 @@ a {text-decoration: none; color:#FFFFCC; font-size: .75em;}
 .editdeletepane{}
 
 .flash          { background: #cee5F5; }
+
+
 
