@@ -32,7 +32,7 @@ def newMenuItem(restaurant_id):
     return "page to create a new menu item. Task 1 complete!"
 
 #Task 2: Create route for editMenuItem function here
-def editMenuItem(restaurant_id, menu_id)
+def editMenuItem(restaurant_id, menu_id):
     return "page to edit a menu item. Task 2 complete!"
 
 #Task 3: Create a route for deleteMenuItem function here
