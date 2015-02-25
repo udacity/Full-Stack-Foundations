@@ -35,7 +35,7 @@ class webServerHandler(BaseHTTPRequestHandler):
 			self.send_error(404, 'File Not Found: %s' % self.path)
 
 
-def do_POST(self):
+	def do_POST(self):
 		try:
 			self.send_response(301)
 			self.end_headers()
