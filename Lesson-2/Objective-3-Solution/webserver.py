@@ -36,7 +36,7 @@ class webServerHandler(BaseHTTPRequestHandler):
                 restaurants = session.query(Restaurant).all()
                 output = ""
                 #Objective 3 Step 1 - Create a Link to create a new menu item
-                output += "<a href = '/restaurants/new' > Make a New Restaurant Here </a></br></br>
+                output += "<a href = '/restaurants/new' > Make a New Restaurant Here </a></br></br>"
                 
                 self.send_response(200)
                 self.send_header('Content-type','text/html')
@@ -63,7 +63,7 @@ class webServerHandler(BaseHTTPRequestHandler):
         try:
             if self.path.endswith("/restaurants/new"):
                 ctype, pdict = cgi.parse_header(self.headers.getheader('content-type'))
-                if ctype == 'mulitpart/form-data':
+                if ctype == 'multipart/form-data':
                     fields = cgi.parse_multipart(self.rfile,pdict)
                     messagecontent = fields.get('newRestaurantName')
               
