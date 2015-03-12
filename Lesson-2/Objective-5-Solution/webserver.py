@@ -16,7 +16,7 @@ session = DBSession()
 class webServerHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         try:
-            # Objective 3 Step 2 - Create /restarants/new page
+            # Objective 3 Step 2 - Create /restaurants/new page
             if self.path.endswith("/restaurants/new"):
                 self.send_response(200)
                 self.send_header('Content-type', 'text/html')
