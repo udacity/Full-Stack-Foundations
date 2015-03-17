@@ -28,6 +28,7 @@ class webServerHandler(BaseHTTPRequestHandler):
                 output += "<h1>Make a New Restaurant</h1>"
                 output += "<form method = 'POST' enctype='multipart/form-data' action = '/restaurants/new'>"
                 output += "<input name = 'newRestaurantName' type = 'text' placeholder = 'New Restaurant Name' > "
+                output += "<input type='submit' value='Create'>"
                 output += "</form></body></html>"
                 self.wfile.write(output)
                 return
