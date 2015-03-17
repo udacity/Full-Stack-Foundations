@@ -1,6 +1,6 @@
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 
-class webServerHandler(BaseHTTPRequestHandler):
+class WebServerHandler(BaseHTTPRequestHandler):
 	def do_GET(self):
 		if self.path.endswith("/hello"):
 			self.send_response(200)
@@ -17,7 +17,7 @@ class webServerHandler(BaseHTTPRequestHandler):
 def main():
 	try:
 		port = 8080
-		server = HTTPServer(('', port), webServerHandler)
+		server = HTTPServer(('', port), WebServerHandler)
 		print "Web Server running on port %s"  % port
 		server.serve_forever()
 	except KeyboardInterrupt:
