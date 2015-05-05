@@ -14,6 +14,7 @@ session = DBSession()
 
 
 class webServerHandler(BaseHTTPRequestHandler):
+
     def do_GET(self):
         try:
             # Objective 3 Step 2 - Create /restaurants/new page
@@ -80,12 +81,12 @@ class webServerHandler(BaseHTTPRequestHandler):
                 for restaurant in restaurants:
                     output += restaurant.name
                     output += "</br>"
-                    ##Objective 2 -- Add Edit and Delete Links
-                    ##Objective 4 -- Replace Edit href
+                    # Objective 2 -- Add Edit and Delete Links
+                    # Objective 4 -- Replace Edit href
 
                     output += "<a href ='/restaurants/%s/edit' >Edit </a> " % restaurant.id
                     output += "</br>"
-                    ##Objective 5 -- Replace Delete href
+                    # Objective 5 -- Replace Delete href
                     output += "<a href ='/restaurants/%s/delete'> Delete </a>" % restaurant.id
                     output += "</br></br></br>"
 
@@ -129,9 +130,9 @@ class webServerHandler(BaseHTTPRequestHandler):
                         self.send_header('Location', '/restaurants')
                         self.end_headers()
 
-
             if self.path.endswith("/restaurants/new"):
-                ctype, pdict = cgi.parse_header(self.headers.getheader('content-type'))
+                ctype, pdict = cgi.parse_header(
+                    self.headers.getheader('content-type'))
                 if ctype == 'mulitpart/form-data':
                     fields = cgi.parse_multipart(self.rfile, pdict)
                     messagecontent = fields.get('newRestaurantName')
