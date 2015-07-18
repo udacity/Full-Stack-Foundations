@@ -36,7 +36,7 @@ def newMenuItem(restaurant_id):
 # Task 2: Create route for editMenuItem function here
 
 
-@app.route('/restaurant/<int:restaurant_id>/<int:menu_id/edit/')
+@app.route('/restaurant/<int:restaurant_id>/<int:menu_id>/edit/')
 def editMenuItem(restaurant_id, menu_id):
     return "page to edit a menu item. Task 2 complete!"
 
