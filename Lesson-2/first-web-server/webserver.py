@@ -10,7 +10,7 @@ class WebServerHandler(BaseHTTPRequestHandler):
             self.end_headers()
             message = ""
             message += "<html><body>Hello!</body></html>"
-            self.wfile.write(message.encode()encoding='utf_8')
+            self.wfile.write(message.encode(encoding='utf_8'))
             print message
             return
         else:
