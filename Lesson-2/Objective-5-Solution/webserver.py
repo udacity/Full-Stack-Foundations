@@ -61,7 +61,7 @@ class webServerHandler(BaseHTTPRequestHandler):
                     self.end_headers()
                     output = ""
                     output += "<html><body>"
-                    output += "<h1>Are you sure you want to delete %s?" % myRestaurantQuery.name
+                    output += "<h1>Are you sure you want to delete %s?</h1>" % myRestaurantQuery.name
                     output += "<form method='POST' enctype = 'multipart/form-data' action = '/restaurants/%s/delete'>" % restaurantIDPath
                     output += "<input type = 'submit' value = 'Delete'>"
                     output += "</form>"
