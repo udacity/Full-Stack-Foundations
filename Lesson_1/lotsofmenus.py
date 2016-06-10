@@ -361,7 +361,7 @@ menuItem1 = MenuItem(name="Chantrelle Toast", description="Crispy Toast with Ses
                      price="$5.95", course="Appetizer", restaurant=restaurant1)
 
 session.add(menuItem1)
-session.commit
+session.commit()
 
 menuItem1 = MenuItem(name="Guanciale Chawanmushi", description="Japanese egg custard served hot with spicey Italian Pork Jowl (guanciale)",
                      price="$6.95", course="Dessert", restaurant=restaurant1)
