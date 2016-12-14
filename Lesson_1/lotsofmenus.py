@@ -74,12 +74,6 @@ menuItem7 = MenuItem(name="Grilled Cheese Sandwich", description="On texas toast
 session.add(menuItem7)
 session.commit()
 
-menuItem8 = MenuItem(name="Veggie Burger", description="Made with freshest of ingredients and home grown spices",
-                     price="$5.99", course="Entree", restaurant=restaurant1)
-
-session.add(menuItem8)
-session.commit()
-
 
 # Menu for Super Stir Fry
 restaurant2 = Restaurant(name="Super Stir Fry")
