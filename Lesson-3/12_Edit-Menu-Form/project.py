@@ -13,7 +13,7 @@ session = DBSession()
 
 
 @app.route('/')
-def restaurantMenu(restaurant_id):
+def restaurantMenu_home(restaurant_id):
     restaurant = session.query(Restaurant).first()
     items = session.query(MenuItem).filter_by(restaurant_id=restaurant.id)
     output = ''
