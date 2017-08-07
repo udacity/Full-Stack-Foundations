@@ -284,7 +284,7 @@ session.commit()
 
 
 # Menu for Auntie Ann's
-restaurant1 = Restaurant(name="Auntie Ann\'s Diner' ")
+restaurant1 = Restaurant(name="Auntie Ann\'s Diner ")
 
 session.add(restaurant1)
 session.commit()
