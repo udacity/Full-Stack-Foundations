@@ -3,9 +3,9 @@
 <body>
 <h1> Are you sure you want to delete {{item.name}}? </h1>
 
-<form action="{{ url_for('deleteMenuItem', restaurant_id=item.restaurant_id, menu_id=item.id)}}" method = 'post'>
+<form action="{{ url_for('deleteMenuItem', restaurant_id=item.restaurant_id, menu_id=item.id)}}" method = 'POST'>
 
-<input type='submit', value = 'Delete'>
+<input type='submit' value = 'Delete'>
 
 
 
