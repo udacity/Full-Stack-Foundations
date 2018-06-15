@@ -73,7 +73,7 @@ def editMenuItem(restaurant_id, menu_id):
         # USE THE RENDER_TEMPLATE FUNCTION BELOW TO SEE THE VARIABLES YOU
         # SHOULD USE IN YOUR EDITMENUITEM TEMPLATE
         return render_template(
-            'editmenuitem.html', restaurant_id=restaurant_id, menu_id=menu_id, item=editedItem)
+            'editmenuitem.html', restaurant_id=restaurant_id, menu_id=menu_id, item=editedItem.name)
 
 
 @app.route('/restaurant/<int:restaurant_id>/<int:menu_id>/delete/')
