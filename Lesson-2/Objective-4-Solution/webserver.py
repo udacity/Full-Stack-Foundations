@@ -32,9 +32,9 @@ class webServerHandler(BaseHTTPRequestHandler):
                 self.wfile.write(output)
                 return
             if self.path.endswith("/edit"):
-                restaurantIDPath = self.path.split("/")[2]
+                restaurantIDPath = self.path.split("/")[1]
                 myRestaurantQuery = session.query(Restaurant).filter_by(
-                    id=restaurantIDPath).one()
+                    id=restaurantIDPath).first()
                 if myRestaurantQuery:
                     self.send_response(200)
                     self.send_header('Content-type', 'text/html')
@@ -86,10 +86,10 @@ class webServerHandler(BaseHTTPRequestHandler):
                 if ctype == 'multipart/form-data':
                     fields = cgi.parse_multipart(self.rfile, pdict)
                     messagecontent = fields.get('newRestaurantName')
-                    restaurantIDPath = self.path.split("/")[2]
+                    restaurantIDPath = self.path.split("/")[1]
 
                     myRestaurantQuery = session.query(Restaurant).filter_by(
-                        id=restaurantIDPath).one()
+                        id=restaurantIDPath).first()
                     if myRestaurantQuery != []:
                         myRestaurantQuery.name = messagecontent[0]
                         session.add(myRestaurantQuery)
