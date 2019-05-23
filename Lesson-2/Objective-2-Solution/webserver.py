@@ -1,4 +1,4 @@
-from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
+from http.server import BaseHTTPRequestHandler, HTTPServer
 import cgi
 
 # import CRUD Operations from Lesson 1
@@ -34,7 +34,7 @@ class webServerHandler(BaseHTTPRequestHandler):
                     output += "</br></br></br>"
 
                 output += "</body></html>"
-                self.wfile.write(output)
+                self.wfile.write(bytes(output, "utf-8"))
                 return
         except IOError:
             self.send_error(404, 'File Not Found: %s' % self.path)
@@ -43,10 +43,10 @@ class webServerHandler(BaseHTTPRequestHandler):
 def main():
     try:
         server = HTTPServer(('', 8080), webServerHandler)
-        print 'Web server running...open localhost:8080/restaurants in your browser'
+        print('Web server running...open localhost:8080/restaurants in your browser')
         server.serve_forever()
     except KeyboardInterrupt:
-        print '^C received, shutting down server'
+        print('^C received, shutting down server')
         server.socket.close()
 
 if __name__ == '__main__':
