@@ -1,4 +1,4 @@
-from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
+from http.server import BaseHTTPRequestHandler, HTTPServer
 
 
 class webServerHandler(BaseHTTPRequestHandler):
@@ -10,8 +10,8 @@ class webServerHandler(BaseHTTPRequestHandler):
             self.end_headers()
             message = ""
             message += "<html><body>Hello!</body></html>"
-            self.wfile.write(message)
-            print message
+            self.wfile.write(bytes(message, "utf-8"))
+            print(message)
             return
 
         if self.path.endswith("/hola"):
@@ -19,9 +19,9 @@ class webServerHandler(BaseHTTPRequestHandler):
             self.send_header('Content-type', 'text/html')
             self.end_headers()
             message = ""
-            message += "<html><body> &#161 Hola ! </body></html>"
-            self.wfile.write(message)
-            print message
+            message += "<html><body> &#161 Hola !  <a href = '/hello' > Back to Hello </a></body></html>"
+            self.wfile.write(bytes(message, "utf-8"))
+            print(message)
             return
 
         else:
@@ -32,10 +32,10 @@ def main():
     try:
         port = 8080
         server = HTTPServer(('', port), webServerHandler)
-        print "Web Server running on port %s" % port
+        print("Web Server running on port %s" % port)
         server.serve_forever()
     except KeyboardInterrupt:
-        print " ^C entered, stopping web server...."
+        print(" ^C entered, stopping web server....")
         server.socket.close()
 
 if __name__ == '__main__':
