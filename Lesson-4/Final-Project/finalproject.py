@@ -126,10 +126,6 @@ def newMenuItem(restaurant_id):
     else:
         return render_template('newmenuitem.html', restaurant_id=restaurant_id)
 
-    return render_template('newMenuItem.html', restaurant=restaurant)
-    # return 'This page is for making a new menu item for restaurant %s'
-    # %restaurant_id
-
 # Edit a menu item
 
 
