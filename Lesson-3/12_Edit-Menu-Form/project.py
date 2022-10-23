@@ -66,9 +66,9 @@ def editMenuItem(restaurant_id, menu_id):
     if request.method == 'POST':
         if request.form['name']:
             editedItem.name = request.form['name']
-        session.add(editedItem)
-        session.commit()
-        return redirect(url_for('restaurantMenu', restaurant_id=restaurant_id))
+            session.add(editedItem)
+            session.commit()
+            return redirect(url_for('restaurantMenu', restaurant_id=restaurant_id))
     else:
         # USE THE RENDER_TEMPLATE FUNCTION BELOW TO SEE THE VARIABLES YOU
         # SHOULD USE IN YOUR EDITMENUITEM TEMPLATE
