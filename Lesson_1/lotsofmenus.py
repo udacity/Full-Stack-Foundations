@@ -101,25 +101,25 @@ session.add(menuItem2)
 session.commit()
 
 menuItem3 = MenuItem(name="Spicy Tuna Roll", description="Seared rare ahi, avocado, edamame, cucumber with wasabi soy sauce ",
-                     price="15", course="Entree", restaurant=restaurant2)
+                     price="$15", course="Entree", restaurant=restaurant2)
 
 session.add(menuItem3)
 session.commit()
 
 menuItem4 = MenuItem(name="Nepali Momo ", description="Steamed dumplings made with vegetables, spices and meat. ",
-                     price="12", course="Entree", restaurant=restaurant2)
+                     price="$12", course="Entree", restaurant=restaurant2)
 
 session.add(menuItem4)
 session.commit()
 
 menuItem5 = MenuItem(name="Beef Noodle Soup", description="A Chinese noodle soup made of stewed or red braised beef, beef broth, vegetables and Chinese noodles.",
-                     price="14", course="Entree", restaurant=restaurant2)
+                     price="$14", course="Entree", restaurant=restaurant2)
 
 session.add(menuItem5)
 session.commit()
 
 menuItem6 = MenuItem(name="Ramen", description="a Japanese noodle soup dish. It consists of Chinese-style wheat noodles served in a meat- or (occasionally) fish-based broth, often flavored with soy sauce or miso, and uses toppings such as sliced pork, dried seaweed, kamaboko, and green onions.",
-                     price="12", course="Entree", restaurant=restaurant2)
+                     price="$12", course="Entree", restaurant=restaurant2)
 
 session.add(menuItem6)
 session.commit()
