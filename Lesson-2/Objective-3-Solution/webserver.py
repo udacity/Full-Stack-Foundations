@@ -1,5 +1,7 @@
-from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
+from http.server import BaseHTTPRequestHandler, HTTPServer
 import cgi
+import sys
+
 
 # import CRUD Operations from Lesson 1
 from database_setup import Base, Restaurant, MenuItem
@@ -28,10 +30,10 @@ class webServerHandler(BaseHTTPRequestHandler):
                 output += "<form method = 'POST' enctype='multipart/form-data' action = '/restaurants/new'>"
                 output += "<input name = 'newRestaurantName' type = 'text' placeholder = 'New Restaurant Name' > "
                 output += "<input type='submit' value='Create'>"
-                output += "</form></body></html>"
-                self.wfile.write(output)
+                output += "</form></html></body>"
+                self.wfile.write(bytes(output, "utf-8"))
                 return
-
+            
             if self.path.endswith("/restaurants"):
                 restaurants = session.query(Restaurant).all()
                 output = ""
@@ -46,30 +48,32 @@ class webServerHandler(BaseHTTPRequestHandler):
                     output += restaurant.name
                     output += "</br>"
                     # Objective 2 -- Add Edit and Delete Links
+                    # Objective 4 -- Replace Edit href
                     output += "<a href ='#' >Edit </a> "
                     output += "</br>"
                     output += "<a href =' #'> Delete </a>"
                     output += "</br></br></br>"
 
                 output += "</body></html>"
-                self.wfile.write(output)
+                self.wfile.write(bytes(output, "utf-8"))
                 return
-
         except IOError:
             self.send_error(404, 'File Not Found: %s' % self.path)
 
     # Objective 3 Step 3- Make POST method
     def do_POST(self):
         try:
+            
             if self.path.endswith("/restaurants/new"):
                 ctype, pdict = cgi.parse_header(
-                    self.headers.getheader('content-type'))
+                    self.headers.get('content-type'))
+                pdict['boundary'] = bytes(pdict['boundary'], "utf-8")    ## For Python 3
                 if ctype == 'multipart/form-data':
                     fields = cgi.parse_multipart(self.rfile, pdict)
                     messagecontent = fields.get('newRestaurantName')
 
                     # Create new Restaurant Object
-                    newRestaurant = Restaurant(name=messagecontent[0])
+                    newRestaurant = Restaurant(name=messagecontent[0].decode("utf-8"))
                     session.add(newRestaurant)
                     session.commit()
 
@@ -79,17 +83,19 @@ class webServerHandler(BaseHTTPRequestHandler):
                     self.end_headers()
 
         except:
-            pass
+            self.send_error(404, "{}".format(sys.exc_info()[0]))
+            print(sys.exc_info())
 
 
 def main():
     try:
         server = HTTPServer(('', 8080), webServerHandler)
-        print 'Web server running... Open localhost:8080/restaurants in your browser'
+        print('Web server running...open localhost:8080/restaurants in your browser')
         server.serve_forever()
     except KeyboardInterrupt:
-        print '^C received, shutting down server'
+        print('^C received, shutting down server')
         server.socket.close()
+
 
 if __name__ == '__main__':
     main()
