@@ -33,15 +33,14 @@ class webServerHandler(BaseHTTPRequestHandler):
                 return
 
             if self.path.endswith("/restaurants"):
-                restaurants = session.query(Restaurant).all()
-                output = ""
-                # Objective 3 Step 1 - Create a Link to create a new menu item
-                output += "<a href = '/restaurants/new' > Make a New Restaurant Here </a></br></br>"
-
+                restaurants = session.query(Restaurant).all()               
                 self.send_response(200)
                 self.send_header('Content-type', 'text/html')
                 self.end_headers()
+                output = ""
                 output += "<html><body>"
+                # Objective 3 Step 1 - Create a Link to create a new menu item
+                output += "<a href = '/restaurants/new' > Make a New Restaurant Here </a></br></br>"
                 for restaurant in restaurants:
                     output += restaurant.name
                     output += "</br>"
